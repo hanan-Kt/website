@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Python, JavaScript, C, Rust and Java compared | How Code Works</title><meta name="description" content="Five popular languages, what each is good at, and why they feel so different to write.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css"></head><body>
+<header class="site"><a class="logo" href="../index.html">how<span>code</span>works</a><nav><a href="../index.html#posts">Blog</a><a href="../about.html">About</a></nav></header>
+<main><article><h1>Python, JavaScript, C, Rust and Java compared</h1><div class="meta">8 min read</div>
+<p>Every language can compute the same things. They differ in how they trade speed, safety and effort. Here are five common ones.</p>
+<table><tr><th>Language</th><th>How it runs</th><th>Types</th><th>Memory</th><th>Common uses</th></tr>
+<tr><td>Python</td><td>Interpreted</td><td>Dynamic</td><td>Garbage collected</td><td>Scripts, data, AI, automation</td></tr>
+<tr><td>JavaScript</td><td>Engine with JIT</td><td>Dynamic</td><td>Garbage collected</td><td>Websites, servers, apps</td></tr>
+<tr><td>Java</td><td>Bytecode on a VM</td><td>Static</td><td>Garbage collected</td><td>Large systems, Android</td></tr>
+<tr><td>C</td><td>Compiled</td><td>Static</td><td>Manual</td><td>Operating systems, devices</td></tr>
+<tr><td>Rust</td><td>Compiled</td><td>Static</td><td>Checked at compile time</td><td>Fast, safe systems code</td></tr></table>
+<h2>Static and dynamic types</h2>
+<p>A <b>type</b> says what kind of value something is: a number, text, a list. In a <b>dynamically typed</b> language, types are checked while the program runs, so you can write <code>x = 5</code> and later <code>x = "five"</code>. It is quick to write, but some mistakes only show up when that line runs. In a <b>statically typed</b> language, types are checked before the program runs, so the compiler catches many mistakes early. You pay for this by writing more.</p>
+<pre><code># Python: fine until it runs
+def add(a, b):
+    return a + b
+add(2, "3")   # crashes only when this line executes
+
+// Rust: refuses to compile
+fn add(a: i32, b: i32) -> i32 { a + b }
+add(2, "3");  // compile error</code></pre>
+<h2>Who cleans up memory?</h2>
+<p>Programs constantly need memory for new data and must give it back. There are three approaches:</p>
+<ul><li><b>Manual (C):</b> you ask for memory and you free it. This is fastest and gives full control, but forgetting to free causes leaks, and freeing twice or using freed memory causes crashes and security holes.</li>
+<li><b>Garbage collection (Python, Java, JavaScript):</b> the runtime periodically finds data nothing uses and frees it. It is much safer, but uses some extra memory and the occasional short pause.</li>
+<li><b>Ownership (Rust):</b> every value has one owner, and when the owner goes out of scope the value is freed. The compiler checks these rules, so you get C-like speed with far fewer memory bugs. The cost is a steeper learning curve.</li></ul>
+<h2>Which should you pick?</h2>
+<p>Start with Python or JavaScript to learn ideas quickly. Choose Java for big, long-lived business software. Choose C or Rust when speed and control over the hardware matter. Many programmers use several, picking the tool that fits the job.</p>
+<div class="next"><span class="meta">Next post</span><br><a href="variables-functions-loops.html">Variables, functions and loops: the same ideas everywhere</a></div></article></main><footer>Made with plain HTML, CSS and a little JavaScript.</footer>

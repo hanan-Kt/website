@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What actually happens when you run code | How Code Works</title><meta name="description" content="From the text you type to the electricity in the chip: the path every program takes.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css"></head><body>
+<header class="site"><a class="logo" href="../index.html">how<span>code</span>works</a><nav><a href="../index.html#posts">Blog</a><a href="../about.html">About</a></nav></header>
+<main><article><h1>What actually happens when you run code</h1><div class="meta">6 min read</div>
+<p>You type <code>print("hi")</code>, press run, and text appears. It feels like magic, but there are only a few steps, and every language shares them.</p>
+<h2>1. Your code is just text</h2>
+<p>A source file is plain text. A computer's processor cannot read it. A processor only understands machine code: long lists of tiny numbered instructions like "add these two numbers" or "copy this value to that place in memory."</p>
+<h2>2. Something has to translate it</h2>
+<p>Translation happens in one of three ways:</p>
+<ul><li><b>Compiling:</b> a program called a compiler translates all your code into machine code before it runs. You get a separate program file. C, C++, Rust and Go work this way.</li>
+<li><b>Interpreting:</b> a program called an interpreter reads your code and does what it says, step by step. Python and Ruby work this way.</li>
+<li><b>Mixed:</b> the code is first compiled to a simpler middle form, then run by a virtual machine. Java does this. JavaScript engines go further and compile the busiest parts to machine code while the program runs. This is called just-in-time (JIT) compilation.</li></ul>
+<h2>3. Parsing: understanding the text</h2>
+<p>Before running anything, the translator breaks your text into pieces (tokens like <code>print</code>, <code>(</code>, <code>"hi"</code>) and builds a tree that shows how they fit together. <code>2 + 3 * 4</code> becomes a tree where the multiplication sits lower, so it runs first. This is why a missing bracket gives a "syntax error": the tree cannot be built.</p>
+<h2>4. Running: memory and the stack</h2>
+<p>While a program runs, it keeps data in memory. Each time you call a function, the computer adds a new block to a pile called the <b>call stack</b> holding that function's variables. When the function ends, its block is removed. If a function keeps calling itself forever, the pile grows until it overflows. That is a "stack overflow."</p>
+<pre><code>def countdown(n):
+    if n == 0:
+        return
+    print(n)
+    countdown(n - 1)   # adds a new block to the stack
+
+countdown(3)</code></pre>
+<p>Larger or longer-lived data goes in a second area called the <b>heap</b>. Who cleans the heap up is a big difference between languages, which the next post covers.</p>
+<h2>5. The result</h2>
+<p>The processor runs billions of these tiny instructions every second. Your text becomes a tree, then instructions, then changes to memory, then pixels on your screen.</p>
+<div class="next"><span class="meta">Next post</span><br><a href="python-javascript-c-rust-java-compared.html">Python, JavaScript, C, Rust and Java compared</a></div></article></main><footer>Made with plain HTML, CSS and a little JavaScript.</footer>
